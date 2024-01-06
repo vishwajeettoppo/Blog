@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
+import parse from 'html-react-parser';
 
 const Card = ({ key, item }) => {
   
@@ -20,7 +21,7 @@ const Card = ({ key, item }) => {
             {item.title}
           </Link>
           <p className=' text-gray-800 text-justify overflow-clip'>
-            {item.desc.substring(0, 210).trim()}
+            {parse(item.desc.substring(0, 210).trim())}<span>...</span>
           </p>
           <Link href={`/posts/${item.slug}`} className='mt-2 text-sm border-b-2 border-red-400 max-w-max px-1 rounded-sm'>Read More</Link>
         </div>

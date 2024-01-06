@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import React from 'react'
+import parse from 'html-react-parser';
+
 
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await fetch(`http://localhost:3001/api/posts/${slug}`, {
     cache: 'no-store'
   });
-  if (!res.ok) {
-    throw new Error('Something went wrong!')
+  try {
+    return res.json()
+  } catch (error) {
+    console.log(error)
   }
-  return res.json()
 }
 
 const SinglePage = async ({ params }) => {
@@ -33,7 +36,8 @@ const SinglePage = async ({ params }) => {
         </div>
       </div>
       <div className='my-10'>
-        <div className='text-gray-700 text-justify' dangerouslySetInnerHTML={{ __html: body }} />
+        {/* <div className='text-gray-700 text-justify' dangerouslySetInnerHTML={{ __html: body }} /> */}
+        {parse(body)}
       </div>
     </div>
   )
