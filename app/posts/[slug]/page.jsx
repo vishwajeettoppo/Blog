@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 
 
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3001/api/posts/${slug}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
     cache: 'no-store'
   });
   try {

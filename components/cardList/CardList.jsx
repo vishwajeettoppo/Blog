@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../card/Card";
 
 const getData = async (cat) => {
-  const res = await fetch(`http://localhost:3001/api/posts?cat=${cat || ""}`, {
+  const res = await fetch(`http://localhost:3000/api/posts?cat=${cat || ""}`, {
     cache: "no-store",
   });
   try {
